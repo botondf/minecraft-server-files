@@ -1,0 +1,15 @@
+[Unit]
+Description=Minecraft Server - Backup (service)
+Requires=survival-2022.service
+Requires=survival-2022-backup.timer
+After=network-online.target
+
+[Service]
+User=minecraft
+Group=minecraft
+Type=simple
+ExecStart=/home/botond/servers/minecraft/build/scripts/backup.sh
+Nice=8
+
+[Install]
+WantedBy=multi-user.target

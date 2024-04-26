@@ -1,0 +1,15 @@
+[Unit]
+Description=Minecraft Server - Stop (service)
+Requires=survival-2022.service
+Requires=survival-2022-stop.timer
+
+[Service]
+User=minecraft
+Group=minecraft
+Type=simple
+#NoNewPrivileges=true
+ExecStart=/home/botond/servers/minecraft/build/scripts/stop.sh
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Minecraft Server - Backup (timer)
+Requires=survival-2022.service
+
+[Timer]
+Unit=survival-2022-backup.service
+OnCalendar= Fri *-*-* 00:00:00
+
+[Install]
+WantedBy=timers.target
+RequiredBy=survival-2022.service
