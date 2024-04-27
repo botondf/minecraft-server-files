@@ -5,7 +5,7 @@ Description=Minecraft Server - Executable (service)
 After=network-online.target
 
 [Service]
-WorkingDirectory=/home/botond/servers/minecraft/survival-2022
+WorkingDirectory=/home/minecraft/survival
 User=minecraft
 Group=minecraft
 Type=simple
@@ -14,7 +14,7 @@ Type=simple
 #ProtectHome=true
 NoNewPrivileges=true
 ExecStart=/bin/java -Xms2G -Xmx6G -XX:+UseG1GC -jar spigot-1.20.4.jar nogui
-ExecStop=/home/botond/servers/minecraft/build/scripts/stop.sh
+ExecStop=/home/minecraft/build/scripts/stop.sh
 
 Nice=5
 #Restart=on-success

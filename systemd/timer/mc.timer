@@ -1,12 +1,12 @@
 [Unit]
 Description=Minecraft Server - Start (timer)
-#Wants=survival-2022.service
+#Wants=mc.service
 
 [Timer]
-Unit=survival-2022.service
+Unit=mc.service
 #OnBootSec=5min
 OnCalendar=-- 080000
 
 [Install]
 WantedBy=multi-user.target
-#WantedBy=survival-2022.service
+#WantedBy=mc.service

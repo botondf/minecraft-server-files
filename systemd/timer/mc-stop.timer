@@ -1,12 +1,12 @@
 [Unit]
 Description=Minecraft Server - Graceful Stop (timer)
-Requires=survival-2022.service
+Requires=mc.service
 
 [Timer]
-Unit=survival-2022-stop.service
+Unit=mc-stop.service
 #OnBootSec=5min
 OnCalendar=*-*-* 02:00:00
 
 [Install]
 WantedBy=timers.target
-RequiredBy=survival-2022.service
+RequiredBy=mc.service

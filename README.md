@@ -9,22 +9,33 @@ scripts
 - `rclone`, a CLI remote cloud storage interface, to upload backups to Google Drive with `backup.sh`
   - this requires Google authentication*
   - user: `minecraft`
+- `mcrcon` at https://github.com/Tiiffi/mcrcon.git, build with *gcc*
+- Spigot BuildTools (CLI) at https://www.spigotmc.org/wiki/buildtools
 
 *Manual SSH tunnel with another device with browser right now.
-Working on automatic HTTP based solution.
+Working on automatic HTTP based solution for Google's OAuth 2.0.
 ---
 ## Setup
-working directory of server: `/home/botond/servers/minecraft/survival-2022`
+Working directory of server: `/home/botond/servers/minecraft/survival-2022`
+to `/home/minecraft/survival`
+Open the following ports:
+- 25655 TCP
+- 8100 TCP
 
 ---
 ### scripts
 
-included:
-- `rcon.sh`
-- `start.sh`
-- `stop.sh`
-- `backup.sh`
-- `fetch-ip.sh`
+Included:
+- `rcon.sh` pre-configured call to `mcrcon` executable with IP (localhost) and password (also obscures password) 
+- `start.sh` start server as service with configured Java flags
+- `stop.sh` gracefully stop server via *rcon*
+- `backup.sh` pauses auto-saving until all world files zipped
+- `upload.sh` uploads zipped backups to Google Drive via *rclone*
+- `fetch-ip.sh` write public IP to file if it changes
+- `buildtools.sh` fetch new Spigot BuiltTools jar
+- `buildserver.sh` build server jar from BuildTools (NOTE: always makes a `spigot.jar` file for script compatibility)
+- `update.sh` fetch new BuildTools and build new server (runs above two sequentially,
+- `buildtools.sh` then `buildserver.sh`)
 
 ---
 ### systemd
@@ -32,8 +43,13 @@ location of unit files can be `/lib/systemd/system` or alternatives
 
 relies on user `minecraft` perms for scripts above
 
-included:
-- `backup.sh`
+Included systemd units:
+
+| Service             | Use                                | Timer             | Use                                    |
+|---------------------|------------------------------------|-------------------|----------------------------------------|
+| `mc.service`        | run server executable              | `mc.timer`        | (optional) server start time           |
+| `mc-backup.service` | backup world, zip, upload to Drive | `mc-backup.timer` | time at which backup made and uploaded |
+| `mc-stop.service`   | stop & save server gracefully      | `mc-stop.timer`   | (optional) server stop time            |
 ---
 ### config
 included:
