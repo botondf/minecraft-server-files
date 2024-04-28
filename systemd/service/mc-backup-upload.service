@@ -1,0 +1,14 @@
+[Unit]
+Description=Minecraft Server - Backup Upload (service)
+Requires=network-online.target
+After=mc-backup.service
+
+[Service]
+User=minecraft
+Group=minecraft
+Type=simple
+ExecStart=/home/minecraft/build/scripts/backup.sh
+Nice=8
+
+[Install]
+WantedBy=multi-user.target

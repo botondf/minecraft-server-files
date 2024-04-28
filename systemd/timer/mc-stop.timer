@@ -1,6 +1,7 @@
 [Unit]
 Description=Minecraft Server - Graceful Stop (timer)
-Requires=mc.service
+Requires=mc-stop.service
+Requisite=mc.service
 
 [Timer]
 Unit=mc-stop.service
@@ -9,4 +10,3 @@ OnCalendar=*-*-* 02:00:00
 
 [Install]
 WantedBy=timers.target
-RequiredBy=mc.service

@@ -1,0 +1,17 @@
+[Unit]
+Description=Minecraft Server - Update Public IP (service)
+Requires=network-online.target mc-ip.timer
+
+[Service]
+User=minecraft
+Group=minecraft
+WorkingDirectory=/home/minecraft/survival
+#SET REAL PATH
+Type=simple
+ExecStart=scripts/update-ip.sh
+#SET REAL PATH
+#Nice=8
+
+[Install]
+WantedBy=multi-user.target
+#start automatically on successful boot, =~ to default.target

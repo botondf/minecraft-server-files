@@ -1,0 +1,11 @@
+[Unit]
+Description=Minecraft Server - Update Public IP (timer)
+Requires=mc-ip.service
+Wants=network-online.target
+
+[Timer]
+Unit=mc-ip.service
+OnCalendar= Fri *-*-* 00:00:00
+
+[Install]
+WantedBy=timers.target

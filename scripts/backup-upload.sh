@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # first delete previous backup
 rclone delete -vv drive:minecraft/backups --drive-use-trash=false #--dry-run
 
@@ -10,7 +9,7 @@ src_dir=/home/botond/servers/minecraft/survival-2022/Backups/
 n=3
 
 # get array of paths of top n files sorted by date modified
-mapfile -t files < <(ls -t $src_dir | head -n $n)
+mapfile -t files < <(ls -t $src_dir | head -n $n) # use find instead of ls? but alphanum expected so ls is okay
 
 # for each file name
 for file in "${files[@]}"; do
@@ -19,3 +18,4 @@ for file in "${files[@]}"; do
         # upload file via abs path to drive
         rclone copy -vv $abs_path drive:minecraft/backups #--dry-run
 done
+# SET REAL PATH

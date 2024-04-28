@@ -1,14 +1,15 @@
 [Unit]
 Description=Minecraft Server - Backup (service)
-Requires=mc.service
 Requires=mc-backup.timer
-After=network-online.target
+Wants=network-online.target
+Before=mc-backup-upload.service
 
 [Service]
 User=minecraft
 Group=minecraft
 Type=simple
-ExecStart=/home/minecraft/build/scripts/backup.sh
+ExecStart=scripts/backup.sh
+# SET REAL PATH
 Nice=8
 
 [Install]

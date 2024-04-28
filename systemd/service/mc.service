@@ -1,24 +1,26 @@
 [Unit]
 Description=Minecraft Server - Executable (service)
-#Requires=network-online.target
-#Wants=network-online.target
-After=network-online.target
+Wants=network-online.target
+Requires=mc-backup.service mc-backup.timer
 
 [Service]
-WorkingDirectory=/home/minecraft/survival
 User=minecraft
 Group=minecraft
+WorkingDirectory=/home/minecraft/survival
+#SET CORRECT PATH LATER
 Type=simple
 #ProtectSystem=full
 #PrivateDevices=true
 #ProtectHome=true
 NoNewPrivileges=true
-ExecStart=/bin/java -Xms2G -Xmx6G -XX:+UseG1GC -jar spigot-1.20.4.jar nogui
-ExecStop=/home/minecraft/build/scripts/stop.sh
+ExecStart=/bin/java -Xms2G -Xmx6G -XX:+UseG1GC -jar spigot.jar nogui
+ExecStop=scripts/stop.sh
+#SET REAL PATH
 
 Nice=5
 #Restart=on-success
 #RestartSec=10
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
+#=~ to default.target (?)

@@ -1,6 +1,6 @@
 [Unit]
 Description=Minecraft Server - Backup (timer)
-Requires=mc.service
+Requires=mc-backup.service
 
 [Timer]
 Unit=mc-backup.service
@@ -8,4 +8,3 @@ OnCalendar= Fri *-*-* 00:00:00
 
 [Install]
 WantedBy=timers.target
-RequiredBy=mc.service

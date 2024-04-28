@@ -1,7 +1,7 @@
 [Unit]
 Description=Minecraft Server - Stop (service)
-Requires=mc.service
-Requires=mc-stop.timer
+Wants=mc-stop.timer
+Requisite=mc.service
 
 [Service]
 User=minecraft

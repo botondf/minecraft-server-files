@@ -1,11 +1,11 @@
 [Unit]
 Description=Minecraft Server - Start (timer)
-#Wants=mc.service
+Wants=mc.service
 
 [Timer]
 Unit=mc.service
 #OnBootSec=5min
-OnCalendar=-- 080000
+OnCalendar=*-*-* 08:00:00
 
 [Install]
 WantedBy=multi-user.target
