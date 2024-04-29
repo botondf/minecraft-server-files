@@ -18,8 +18,7 @@ Working on automatic HTTP based solution for Google's OAuth 2.0.
 
 ---
 ## Setup
-Working directory of server: `/home/botond/servers/minecraft/survival-2022`
-to `/home/minecraft/survival`
+Working directory of server `~/server`, of user `minecraft`, therefore: `/home/minecraft/server`
 Open the following ports:
 - 25565 TCP
 - 8100 TCP
