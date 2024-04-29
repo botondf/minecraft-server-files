@@ -8,7 +8,7 @@ User=minecraft
 Group=minecraft
 Type=simple
 #NoNewPrivileges=true
-ExecStart=/home/minecraft/build/scripts/stop.sh
+ExecStart=scripts/stop.sh
 Nice=10
 
 [Install]

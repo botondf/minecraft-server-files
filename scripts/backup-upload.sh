@@ -3,7 +3,7 @@
 rclone delete -vv drive:minecraft/backups --drive-use-trash=false #--dry-run
 
 # server backup dir
-src_dir=/home/botond/servers/minecraft/survival-2022/Backups/
+src_dir=../backups
 
 # num of files
 n=3

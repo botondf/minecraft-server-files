@@ -1,7 +1,7 @@
 [Unit]
 Description=Minecraft Server - Backup (service)
-Requires=mc-backup.timer
 Wants=network-online.target
+Requires=mc-backup.timer
 Before=mc-backup-upload.service
 
 [Service]

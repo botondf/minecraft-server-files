@@ -1,7 +1,7 @@
 #!/bin/bash
-pwd=$(cat etc/rcon-pwd)
+passwd=$(cat etc/rcon-passwd)
 
-build/mcrcon -H localhost -P 25575 -p $pwd stop
+build/mcrcon -H localhost -P 25575 -p $passwd stop
 #SET REAL PATH
 
 while kill -0 $MAINPID 2>/dev/null

@@ -13,7 +13,7 @@ Type=simple
 #PrivateDevices=true
 #ProtectHome=true
 NoNewPrivileges=true
-ExecStart=/bin/java -Xms2G -Xmx6G -XX:+UseG1GC -jar spigot.jar nogui
+ExecStart=/bin/java -Xms2G -Xmx6G -XX:+UseG1GC -jar spigot*.jar nogui
 ExecStop=scripts/stop.sh
 #SET REAL PATH
 

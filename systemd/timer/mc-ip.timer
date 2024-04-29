@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Timer]
 Unit=mc-ip.service
-OnCalendar= Fri *-*-* 00:00:00
+OnCalendar= *-*-* 00:00:00
 
 [Install]
 WantedBy=timers.target

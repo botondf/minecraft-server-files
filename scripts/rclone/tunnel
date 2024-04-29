@@ -1,0 +1,2 @@
+#run this on a machine with a browser:
+ssh -L 53682:localhost:53682 -C -N -l minecraft {server_ip}
