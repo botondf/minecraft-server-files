@@ -1,5 +1,5 @@
-ChannelTopicUpdaterChatChannelTopicFormat: "%playercount%/%playermax% players online | %totalplayers% unique players | Uptime: %uptimehours% hrs | IP: use !ip | Map: http://174.112.240.79:8100/ | %usedmemorygb%/%maxmemorygb% GB | Last update: %date%"
+ChannelTopicUpdaterChatChannelTopicFormat: "%playercount%/%playermax% players online | %totalplayers% unique players | Uptime: %uptimehours% hrs | IP: use !ip | Map: http://100.100.100.10:8100/ | %usedmemorygb%/%maxmemorygb% GB | Last update: %date%"
 ChannelTopicUpdaterConsoleChannelTopicFormat: "TPS: %tps% | Mem: %usedmemorygb%GB used/%freememorygb%GB free/%maxmemorygb%GB max | %serverversion%"
 # AtServerShutdownFormats ONLY supports %totalplayers%, %serverversion%, & %date% / %time%
-ChannelTopicUpdaterChatChannelTopicAtServerShutdownFormat: "Server is offline | %totalplayers% unique players | IP: 100.100.100.10 | Map: http://100.100.100.10/"
+ChannelTopicUpdaterChatChannelTopicAtServerShutdownFormat: "Server is offline | %totalplayers% unique players | IP: 100.100.100.10 | Map: http://100.100.100.10:8100/"
 ChannelTopicUpdaterConsoleChannelTopicAtServerShutdownFormat: "Server is offline | %serverversion%"
