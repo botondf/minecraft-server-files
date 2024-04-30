@@ -18,9 +18,10 @@ RUN chown -R minecraft:minecraft .
 
 WORKDIR /home/minecraft/server/scripts
 RUN chmod u+x *.sh
+
+USER minecraft
 RUN ./buildtools.sh
 RUN ./buildserver.sh
-RUN chown -R minecraft:minecraft .
+#RUN chown -R minecraft:minecraft .
 
 WORKDIR /home/minecraft/server
-#USER minecraft
