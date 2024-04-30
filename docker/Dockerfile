@@ -8,5 +8,7 @@ RUN apt-get clean
 RUN useradd minecraft -m
 WORKDIR /home/minecraft
 RUN git clone https://github.com/botondf/minecraft-server-files.git server
+
+WORKDIR /home/minecraft/server
 RUN git clone https://github.com/Tiiffi/mcrcon.git runtime/scripts/rcon
 RUN make runtime/scripts/rcon/mcrcon
