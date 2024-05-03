@@ -1,3 +1,6 @@
 .idea/
+backups/
+runtime/
+scripts/build/
 scripts/etc/public-ip
 scripts/etc/rcon-passwd
