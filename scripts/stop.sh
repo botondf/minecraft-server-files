@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Stopping server..."
+
 passwd=$(cat scripts/etc/rcon-passwd)
 
 scripts/rcon/mcrcon -H localhost -P 25575 -p $passwd stop
