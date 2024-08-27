@@ -5,11 +5,11 @@
 mv ../runtime/spigot*.jar build/old-servers/
 
 #./buildserver.sh replacement because need to run server with --forceUpgrade
-cd build
+cd build || exit
 java -jar BuildTools.jar --rev latest
 mv spigot*.jar ../runtime/
 
-cd ../../runtime/
+cd ../../runtime/ || exit
 # run once to upgrade world
 java -Xms2G -Xmx6G -XX:+UseG1GC -jar spigot*.jar nogui --forceUpgrade
 # new jar may need to change eula
