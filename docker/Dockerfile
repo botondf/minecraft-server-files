@@ -35,8 +35,8 @@ WORKDIR /home/minecraft/server/scripts
 RUN chmod u+x *.sh
 
 # user mode building
-WORKDIR /home/minecraft/server
 USER minecraft
+WORKDIR /home/minecraft/server/scripts
 RUN ./buildtools.sh
 RUN ./buildserver.sh
 #RUN chown -R minecraft:minecraft .
