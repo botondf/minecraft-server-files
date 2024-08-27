@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Building server..."
+
 cd build || exit #change dir to server dir to place server jar there
 java -jar BuildTools.jar --rev latest
 mv spigot*.jar ../../runtime/
