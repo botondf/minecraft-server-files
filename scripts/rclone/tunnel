@@ -1,2 +1,3 @@
-#run this on a machine with a browser:
+## run this on a machine with a browser,
+## where {server_ip} is the local IP of the Minecraft server machine:
 ssh -L 53682:localhost:53682 -C -N -l minecraft {server_ip}
