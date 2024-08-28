@@ -4,7 +4,7 @@ COPY . /app
 WORKDIR /app
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get -y install curl git gcc make zip rclone vim
+RUN apt-get -y install systemd curl git gcc make zip rclone vim
 # (optional but breakes for MC 1.20.5+) debian packaged Java. Lags behind Oracle releases.
 #RUN apt-get -y default-jre
 # direct download of Java (hardcoded link for ver 21!)
