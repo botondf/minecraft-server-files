@@ -8,14 +8,17 @@ dpkg -i jdk-21_linux-x64_bin.deb
 rm jdk-21_linux-x64_bin.deb
 apt-get clean
 
-useradd minecraft -m
-cd minecraft || exit
-git clone https://github.com/botondf/minecraft-server-files.git server
-cd server || exit
+#useradd minecraft -m
+#cd minecraft || exit
+#git clone https://github.com/botondf/minecraft-server-files.git server
+#cd server || exit
 git clone https://github.com/Tiiffi/mcrcon.git server/scripts/rcon
 make server/scripts/rcon/mcrcon
 
-cd systemd/services || exit
+cp systemd/services/mc*.service /etc/systemd/system
+cp systemd/timers/mc*.timer /etc/systemd/system
+
+cd /etc/systemd/system || exit
 systemctl enable mc.service mc-backup.service mc-backup-upload.service mc-ip.service mc-stop.service
 systemctl daemon-reload
 cd systemd/timers || exit
