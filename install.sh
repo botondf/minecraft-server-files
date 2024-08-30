@@ -30,7 +30,7 @@ make scripts/rcon/mcrcon
 cp systemd/services/mc*.service /etc/systemd/system
 cp systemd/timers/mc*.timer /etc/systemd/system
 
-cd /etc/systemd/system || exit
+cd /lib/systemd/system || exit
 systemctl enable mc.service mc-backup.service mc-backup-upload.service mc-ip.service mc-stop.service
 systemctl daemon-reload
 #cd systemd/timers || exit
