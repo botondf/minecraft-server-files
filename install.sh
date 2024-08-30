@@ -1,5 +1,14 @@
 #!/bin/bash
 
+grep https://github.com/botondf/ .git/config || exit
+DIR=$(pwd) # get git repo dir path
+#NAME=$(basename "$DIR") # get git repo dir name
+
+useradd minecraft -m
+cd /home/minecraft || exit
+
+mv "$DIR" /home/minecraft/server || exit
+
 apt-get update
 apt-get dist-upgrade -y
 apt-get install -y curl gcc make vim zip unzip rclone
@@ -8,12 +17,9 @@ dpkg -i jdk-21_linux-x64_bin.deb
 rm jdk-21_linux-x64_bin.deb
 apt-get clean
 
-#useradd minecraft -m
-#cd minecraft || exit
-#git clone https://github.com/botondf/minecraft-server-files.git server
-#cd server || exit
-git clone https://github.com/Tiiffi/mcrcon.git server/scripts/rcon
-make server/scripts/rcon/mcrcon
+cd server || exit
+git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
+make scripts/rcon/mcrcon
 
 cp systemd/services/mc*.service /etc/systemd/system
 cp systemd/timers/mc*.timer /etc/systemd/system
