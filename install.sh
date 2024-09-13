@@ -10,14 +10,16 @@ grep https://github.com/botondf/ .git/config || exit
 DIR=$(pwd) # get git repo dir path
 #NAME=$(basename "$DIR") # get git repo dir name
 
-useradd mcserver -d /home/minecraft -l -s /sbin/nologin -c "Minecraft server user"
-useradd mcutils -d /home/minecraft -l -s /bin/bash -c "Minecraft tools user"
+groupadd minecraft
+
+useradd mcserver -g minecraft -m -d /home/minecraft -l -s /sbin/nologin -c "Minecraft server user"
+useradd mcutils -g minecraft -m -d /home/minecraft -l -s /bin/bash -c "Minecraft tools user"
 loginctl enable-linger mcserver
 loginctl enable-linger mcutils
 cd /home/minecraft || exit
 
-mv "$DIR"/runtime /home/minecraft/mc || exit
-mv "$DIR" /home/mcserver/ || exit
+mv "$DIR"/runtime /home/minecraft/runtime || exit
+mv "$DIR" /home/minecraft/ || exit
 
 apt-get update
 apt-get dist-upgrade -y
@@ -27,14 +29,16 @@ dpkg -i jdk-21_linux-x64_bin.deb
 rm jdk-21_linux-x64_bin.deb
 apt-get clean
 
-cd server || exit
+# /server was moved
+# cd server || exit
+cd /home/minecraft || exit
 git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
 make scripts/rcon/mcrcon
 
-cp systemd/services/mc*.service /lib/systemd/system
-cp systemd/timers/mc*.timer /lib/systemd/system
+cp systemd/services/mc*.service /home/minecraft/.config/systemd/user/
+cp systemd/timers/mc*.timer /home/minecraft/.config/systemd/user/
 
-cd /lib/systemd/system || exit
+cd /home/minecraft/.config/systemd/user/ || exit
 systemctl enable mc.service mc-backup.service mc-backup-upload.service mc-ip.service mc-stop.service
 systemctl daemon-reload
 #cd systemd/timers || exit
@@ -47,7 +51,7 @@ systemctl daemon-reload
 systemctl start mc.timer mc-backup.timer mc-ip.timer mc-stop.timer
 systemctl daemon-reload
 
-cd /home/minecraft/server/scripts/build || exit
+cd /home/minecraft/scripts/build || exit
 curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 java -jar BuildTools.jar --rev latest
 mv spigot*.jar ../../runtime/
