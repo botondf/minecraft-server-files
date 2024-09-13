@@ -4,9 +4,9 @@ Wants=network-online.target
 Requires=mc-backup.service mc-backup.timer
 
 [Service]
-User=minecraft
-Group=minecraft
-WorkingDirectory=/home/minecraft/survival
+User=mc-server
+Group=mc-server
+WorkingDirectory=/home/mc-server
 #SET CORRECT PATH LATER
 Type=simple
 #ProtectSystem=full
@@ -17,7 +17,7 @@ ExecStart=scripts/start.sh
 ExecStop=scripts/stop.sh
 #SET REAL PATH
 
-Nice=5
+Nice=1
 #Restart=on-success
 #RestartSec=10
 

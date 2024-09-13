@@ -10,10 +10,14 @@ grep https://github.com/botondf/ .git/config || exit
 DIR=$(pwd) # get git repo dir path
 #NAME=$(basename "$DIR") # get git repo dir name
 
-useradd minecraft -m
+useradd mcserver -d /home/minecraft -l -s /sbin/nologin -c "Minecraft server user"
+useradd mcutils -d /home/minecraft -l -s /bin/bash -c "Minecraft tools user"
+loginctl enable-linger mcserver
+loginctl enable-linger mcutils
 cd /home/minecraft || exit
 
-mv "$DIR" /home/minecraft/server || exit
+mv "$DIR"/runtime /home/minecraft/mc || exit
+mv "$DIR" /home/mcserver/ || exit
 
 apt-get update
 apt-get dist-upgrade -y
@@ -27,8 +31,8 @@ cd server || exit
 git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
 make scripts/rcon/mcrcon
 
-cp systemd/services/mc*.service /etc/systemd/system
-cp systemd/timers/mc*.timer /etc/systemd/system
+cp systemd/services/mc*.service /lib/systemd/system
+cp systemd/timers/mc*.timer /lib/systemd/system
 
 cd /lib/systemd/system || exit
 systemctl enable mc.service mc-backup.service mc-backup-upload.service mc-ip.service mc-stop.service
