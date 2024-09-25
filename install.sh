@@ -19,7 +19,8 @@ loginctl enable-linger mcutils
 cd /home/minecraft || exit
 
 mv "$DIR"/runtime /home/minecraft/runtime || exit
-mv "$DIR" /home/minecraft/ || exit
+mv "$DIR"/. /home/minecraft/ || exit
+# this moves runtime outside minecraft-server-files
 
 # temp disable
 #apt-get update
@@ -37,6 +38,7 @@ cd /home/minecraft || exit
 #git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
 #make scripts/rcon/mcrcon
 
+# this seems no not be performed properly - dir not found
 mkdir /home/minecraft/.config/systemd/user
 cp systemd/services/mc*.service /home/minecraft/.config/systemd/user/
 cp systemd/timers/mc*.timer /home/minecraft/.config/systemd/user/
