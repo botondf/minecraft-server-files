@@ -73,7 +73,7 @@ cd /home/mcserver/runtime || exit
 #sed -i "s/false/true/g" eula.txt
 
 cd /home/mcserver/ || exit
-chown -R minecraft:minecraft .
+chown -R mcserver:minecraft .
 
 cd /home/mcadmin/scripts || exit
 chmod u+x *.sh
