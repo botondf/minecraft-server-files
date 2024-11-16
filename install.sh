@@ -33,17 +33,17 @@ mv "$DIR"/. /home/mcadmin/ || exit
 
 # /server was moved
 # cd server || exit
-cd /home/minecraft || exit
+cd /home/mcadmin || exit
 # temp disable
 #git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
 #make scripts/rcon/mcrcon
 
 # this seems no not be performed properly - dir not found
-mkdir /home/minecraft/.config/systemd/user
+mkdir /home/mcadmin/.config/systemd/user
 cp systemd/services/mc*.service /home/minecraft/.config/systemd/user/
 cp systemd/timers/mc*.timer /home/minecraft/.config/systemd/user/
 
-cd /home/minecraft/.config/systemd/user/ || exit
+cd /home/mcadmin/.config/systemd/user/ || exit
 systemctl enable mc.service mc-backup.service mc-backup-upload.service mc-ip.service mc-stop.service
 systemctl daemon-reload
 #cd systemd/timers || exit
@@ -56,21 +56,21 @@ systemctl daemon-reload
 systemctl start mc.timer mc-backup.timer mc-ip.timer mc-stop.timer
 systemctl daemon-reload
 
-cd /home/minecraft/scripts/build || exit
+cd /home/mcadmin/scripts/build || exit
 # temp disable
 #curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 #java -jar BuildTools.jar --rev latest
 #mv spigot*.jar ../../runtime/
 
-cd ../../runtime || exit
+cd /home/mcserver/runtime || exit
 # temp disable
 #java -XX:+UseG1GC -jar spigot*.jar nogui
 #sed -i "s/false/true/g" eula.txt
 
-cd /home/minecraft || exit
+cd /home/mcserver/ || exit
 chown -R minecraft:minecraft .
 
-cd /home/minecraft/server/scripts || exit
+cd /home/mcadmin/scripts || exit
 chmod u+x *.sh
 
 exit
