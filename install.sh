@@ -16,6 +16,7 @@ useradd mcadmin -g minecraft -m -l -s /bin/bash -c "Minecraft administrator user
 useradd mcserver -g minecraft -m -l -s /sbin/nologin -c "Minecraft server user"
 loginctl enable-linger mcserver
 loginctl enable-linger mcadmin
+
 #cd /home/mcadmin || exit
 
 mv "$DIR"/runtime /home/mcserver/ || exit
