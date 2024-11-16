@@ -19,7 +19,7 @@ loginctl enable-linger mcadmin
 #cd /home/mcadmin || exit
 
 mv "$DIR"/runtime /home/mcserver/ || exit
-mv "$DIR" /home/mcadmin/ || exit
+mv "$DIR"/* /home/mcadmin/ || exit
 # this moves runtime outside minecraft-server-files
 
 # temp disable
