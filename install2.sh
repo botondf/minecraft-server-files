@@ -38,13 +38,13 @@ cd /home/minecraft/ || exit
 systemctl enable /home/minecraft/systemd/services/mc*.service
 systemctl daemon-reload
 
-systemctl enable /home/minecraft/systemd/services/mc*.timer
+systemctl enable /home/minecraft/systemd/timers/mc*.timer
 systemctl daemon-reload
 
 systemctl start /home/minecraft/systemd/services/mc*.service
 systemctl daemon-reload
 
-systemctl start /home/minecraft/systemd/services/mc*.timer
+systemctl start /home/minecraft/systemd/timers/mc*.timer
 systemctl daemon-reload
 
 cd /home/minecraft/scripts/build || exit
