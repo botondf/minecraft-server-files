@@ -66,6 +66,7 @@ cd /home/mcadmin/scripts/build || exit
 #java -jar BuildTools.jar --rev latest
 #mv spigot*.jar ../../runtime/
 
+
 cd /home/mcserver/runtime || exit
 # temp disable
 #java -XX:+UseG1GC -jar spigot*.jar nogui
