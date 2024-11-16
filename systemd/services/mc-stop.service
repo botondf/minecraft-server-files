@@ -4,11 +4,12 @@ Wants=mc-stop.timer
 Requisite=mc.service
 
 [Service]
-User=minecraft
+User=mcadmin
 Group=minecraft
+WorkingDirectory=/home/mcadmin/scripts
 Type=simple
 #NoNewPrivileges=true
-ExecStart=scripts/stop.sh
+ExecStart=stop.sh
 Nice=10
 
 [Install]

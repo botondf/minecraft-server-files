@@ -4,17 +4,17 @@ Wants=network-online.target
 Requires=mc-backup.service mc-backup.timer
 
 [Service]
-User=mc-server
-Group=mc-server
-WorkingDirectory=/home/mc-server
+User=mcadmin
+Group=minecraft
+WorkingDirectory=/home/mcadmin/scripts
 #SET CORRECT PATH LATER
 Type=simple
 #ProtectSystem=full
 #PrivateDevices=true
 #ProtectHome=true
 NoNewPrivileges=true
-ExecStart=scripts/start.sh
-ExecStop=scripts/stop.sh
+ExecStart=start.sh
+ExecStop=stop.sh
 #SET REAL PATH
 
 Nice=1

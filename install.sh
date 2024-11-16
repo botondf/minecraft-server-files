@@ -43,21 +43,16 @@ cd /home/mcadmin || exit
 #cp systemd/services/mc*.service .config/systemd/user/
 #cp systemd/timers/mc*.timer .config/systemd/user/
 
-#cd /home/mcadmin/.config/systemd/user/ || exit
-cd /home/mcadmin/systemd/services/ || exit
-systemctl enable mc.service mc-backup.service mc-backup-upload.service mc-ip.service mc-stop.service
+systemctl enable /home/mcadmin/systemd/services/mc*.service
 systemctl daemon-reload
-#cd systemd/timers || exit
-cd /home/mcadmin/systemd/timers || exit
-systemctl enable mc.timer mc-backup.timer mc-ip.timer mc-stop.timer
+
+systemctl enable /home/mcadmin/systemd/services/mc*.timer
 systemctl daemon-reload
-#cd systemd/services || exit
-cd /home/mcadmin/systemd/services/ || exit
-systemctl start mc.service mc-backup.service mc-backup-upload.service mc-ip.service
+
+systemctl start /home/mcadmin/systemd/services/mc*.service
 systemctl daemon-reload
-#cd systemd/timers || exit
-cd /home/mcadmin/systemd/timers || exit
-systemctl start mc.timer mc-backup.timer mc-ip.timer mc-stop.timer
+
+systemctl start /home/mcadmin/systemd/services/mc*.timer
 systemctl daemon-reload
 
 cd /home/mcadmin/scripts/build || exit

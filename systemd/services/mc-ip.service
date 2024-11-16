@@ -3,12 +3,12 @@ Description=Minecraft Server - Update Public IP (service)
 Requires=network-online.target mc-ip.timer
 
 [Service]
-User=minecraft
+User=mcadmin
 Group=minecraft
-WorkingDirectory=/home/minecraft/survival
+WorkingDirectory=/home/mcadmin/scripts
 #SET REAL PATH
 Type=simple
-ExecStart=scripts/update-ip.sh
+ExecStart=update-ip.sh
 #SET REAL PATH
 #Nice=8
 
