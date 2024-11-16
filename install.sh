@@ -12,14 +12,14 @@ DIR=$(pwd) # get git repo dir path
 
 groupadd minecraft
 
-useradd mcserver -g minecraft -m -d /home/minecraft -l -s /sbin/nologin -c "Minecraft server user"
-useradd mcutils -g minecraft -m -d /home/minecraft -l -s /bin/bash -c "Minecraft tools user"
+useradd mcadmin -g minecraft -m -l -s /bin/bash -c "Minecraft administrator user"
+useradd mcserver -g minecraft -m -l -s /sbin/nologin -c "Minecraft server user"
 loginctl enable-linger mcserver
-loginctl enable-linger mcutils
-cd /home/minecraft || exit
+loginctl enable-linger mcadmin
+#cd /home/mcadmin || exit
 
-mv "$DIR"/runtime /home/minecraft/runtime || exit
-mv "$DIR"/. /home/minecraft/ || exit
+mv "$DIR"/runtime /home/mcserver/ || exit
+mv "$DIR"/. /home/mcadmin/ || exit
 # this moves runtime outside minecraft-server-files
 
 # temp disable
