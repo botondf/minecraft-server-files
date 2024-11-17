@@ -30,24 +30,8 @@ cd /home/minecraft/ || exit
 #git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
 #make scripts/rcon/mcrcon
 
-# this seems no not be performed properly - dir not found
-mkdir /home/minecraft/.config/systemd/user
-mv /home/minecraft/systemd/services/mc*.service /home/minecraft/.config/systemd/user
-mv /home/minecraft/systemd/timers/mc*.timer /home/minecraft/.config/systemd/user
-
-systemctl --user enable /home/minecraft/.config/systemd/user/mc.service
-systemctl --user enable /home/minecraft/.config/systemd/user/mc.timer
-
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-backup.service
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-backup.timer
-
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-backup-upload.service
-
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-ip.service
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-ip.timer
-
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-stop.service
-systemctl --user enable /home/minecraft/.config/systemd/user/mc-stop.timer
+systemctl --user enable /home/minecraft/systemd/services/mc*.service
+systemctl --user enable /home/minecraft/systemd/timers/mc*.timer
 
 systemctl --user daemon-reload
 
