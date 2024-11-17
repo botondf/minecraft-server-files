@@ -35,7 +35,7 @@ mkdir /home/minecraft/.config/systemd/user
 mv /home/minecraft/systemd/services/mc*.service /home/minecraft/.config/systemd/user
 mv /home/minecraft/systemd/timers/mc*.timer /home/minecraft/.config/systemd/user
 
-systemctl --user /home/minecraft/.config/systemd/user/*
+systemctl --user /home/minecraft/.config/systemd/user/mc*
 systemctl --user daemon-reload
 
 cd /home/minecraft/scripts/build || exit
