@@ -4,9 +4,9 @@ Requires=network-online.target
 After=mc-backup.service
 
 [Service]
-User=mcadmin
+User=minecraft
 Group=minecraft
-WorkingDirectory=/home/mcadmin/scripts
+WorkingDirectory=/home/minecraft/scripts
 Type=simple
 ExecStart=backup-upload.sh
 # SET REAL PATH

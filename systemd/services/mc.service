@@ -4,9 +4,9 @@ Wants=network-online.target
 Requires=mc-backup.service mc-backup.timer
 
 [Service]
-User=mcadmin
+User=minecraft
 Group=minecraft
-WorkingDirectory=/home/mcadmin/scripts
+WorkingDirectory=/home/minecraft/scripts
 #SET CORRECT PATH LATER
 Type=simple
 #ProtectSystem=full

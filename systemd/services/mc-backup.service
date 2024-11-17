@@ -5,9 +5,9 @@ Requires=mc-backup.timer
 Before=mc-backup-upload.service
 
 [Service]
-User=mcadmin
+User=minecraft
 Group=minecraft
-WorkingDirectory=/home/mcadmin/scripts
+WorkingDirectory=/home/minecraft/scripts
 Type=simple
 ExecStart=backup.sh
 # SET REAL PATH
