@@ -35,7 +35,20 @@ mkdir /home/minecraft/.config/systemd/user
 mv /home/minecraft/systemd/services/mc*.service /home/minecraft/.config/systemd/user
 mv /home/minecraft/systemd/timers/mc*.timer /home/minecraft/.config/systemd/user
 
-systemctl --user /home/minecraft/.config/systemd/user/mc*
+systemctl --user /home/minecraft/.config/systemd/user/mc.service
+systemctl --user /home/minecraft/.config/systemd/user/mc.timer
+
+systemctl --user /home/minecraft/.config/systemd/user/mc-backup.service
+systemctl --user /home/minecraft/.config/systemd/user/mc-backup.timer
+
+systemctl --user /home/minecraft/.config/systemd/user/mc-backup-upload.service
+
+systemctl --user /home/minecraft/.config/systemd/user/mc-ip.service
+systemctl --user /home/minecraft/.config/systemd/user/mc-ip.timer
+
+systemctl --user /home/minecraft/.config/systemd/user/mc-stop.service
+systemctl --user /home/minecraft/.config/systemd/user/mc-stop.timer
+
 systemctl --user daemon-reload
 
 cd /home/minecraft/scripts/build || exit
