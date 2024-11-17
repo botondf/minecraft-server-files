@@ -31,21 +31,12 @@ cd /home/minecraft/ || exit
 #make scripts/rcon/mcrcon
 
 # this seems no not be performed properly - dir not found
-#mkdir /home/mcadmin/.config/systemd/user
-#cp systemd/services/mc*.service .config/systemd/user/
-#cp systemd/timers/mc*.timer .config/systemd/user/
+mkdir /home/minecraft/.config/systemd/user
+mv /home/minecraft/systemd/services/mc*.service /home/minecraft/.config/systemd/user
+mv /home/minecraft/systemd/timers/mc*.timer /home/minecraft/.config/systemd/user
 
-systemctl enable /home/minecraft/systemd/services/mc*.service
-systemctl daemon-reload
-
-systemctl enable /home/minecraft/systemd/timers/mc*.timer
-systemctl daemon-reload
-
-systemctl start /home/minecraft/systemd/services/mc*.service
-systemctl daemon-reload
-
-systemctl start /home/minecraft/systemd/timers/mc*.timer
-systemctl daemon-reload
+systemctl --user /home/minecraft/.config/systemd/user/*
+systemctl --user daemon-reload
 
 cd /home/minecraft/scripts/build || exit
 # temp disable
