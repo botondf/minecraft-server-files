@@ -31,9 +31,13 @@ cd /home/minecraft/ || exit
 #make scripts/rcon/mcrcon
 
 systemctl --user enable /home/minecraft/systemd/services/mc*.service
-systemctl --user enable /home/minecraft/systemd/timers/mc*.timer
-
 systemctl --user daemon-reload
+
+systemctl --user enable /home/minecraft/systemd/timers/mc*.timer
+systemctl --user daemon-reload
+
+systemctl --user start /home/minecraft/systemd/services/mc*.service
+systemctl --user start /home/minecraft/systemd/timers/mc*.timer
 
 cd /home/minecraft/scripts/build || exit
 # temp disable
