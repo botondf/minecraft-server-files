@@ -30,14 +30,31 @@ cd /home/minecraft/ || exit
 #git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
 #make scripts/rcon/mcrcon
 
-systemctl --user enable /home/minecraft/systemd/services/mc*.service
+systemctl --user enable /home/minecraft/systemd/services/mc.service
+systemctl --user enable /home/minecraft/systemd/services/mc-backup.service
+systemctl --user enable /home/minecraft/systemd/services/mc-backup-upload.service
+systemctl --user enable /home/minecraft/systemd/services/mc-ip.service
+systemctl --user enable /home/minecraft/systemd/services/mc-stop.service
+
+systemctl --user enable /home/minecraft/systemd/timers/mc.timer
+systemctl --user enable /home/minecraft/systemd/timers/mc-backup.timer
+systemctl --user enable /home/minecraft/systemd/timers/mc-ip.timer
+systemctl --user enable /home/minecraft/systemd/timers/mc-stop.timer
 systemctl --user daemon-reload
 
-systemctl --user enable /home/minecraft/systemd/timers/mc*.timer
-systemctl --user daemon-reload
+systemctl --user start /home/minecraft/systemd/services/mc.service
+systemctl --user start /home/minecraft/systemd/services/mc-backup.service
+systemctl --user start /home/minecraft/systemd/services/mc-backup-upload.service
+systemctl --user start /home/minecraft/systemd/services/mc-ip.service
+systemctl --user start /home/minecraft/systemd/services/mc-stop.service
 
-systemctl --user start /home/minecraft/systemd/services/mc*.service
-systemctl --user start /home/minecraft/systemd/timers/mc*.timer
+systemctl --user start /home/minecraft/systemd/timers/mc.timer
+systemctl --user start /home/minecraft/systemd/timers/mc-backup.timer
+systemctl --user start /home/minecraft/systemd/timers/mc-ip.timer
+systemctl --user start /home/minecraft/systemd/timers/mc-stop.timer
+
+systemctl --user daemon-reload
+systemctl daemon-reload
 
 cd /home/minecraft/scripts/build || exit
 # temp disable
@@ -56,5 +73,7 @@ chown -R minecraft:minecraft .
 
 cd /home/minecraft/scripts || exit
 chmod u+x *.sh
+
+echo "enable systemd units with: \n systemctl --user mc*.service \n systemctl --user mc*.timer"
 
 exit
