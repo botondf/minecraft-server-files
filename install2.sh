@@ -17,18 +17,18 @@ loginctl enable-linger minecraft
 mv "$DIR"/* /home/minecraft/ || exit
 
 # temp disable
-#apt-get update
-#apt-get dist-upgrade -y
-#apt-get install -y curl gcc make vim zip unzip rclone
-#curl -O https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-#dpkg -i jdk-21_linux-x64_bin.deb
-#rm jdk-21_linux-x64_bin.deb
-#apt-get clean
+apt-get update
+apt-get dist-upgrade -y
+apt-get install -y curl gcc make vim zip unzip rclone
+curl -O https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+dpkg -i jdk-21_linux-x64_bin.deb
+rm jdk-21_linux-x64_bin.deb
+apt-get clean
 
 cd /home/minecraft/ || exit
 # temp disable
-#git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
-#make scripts/rcon/mcrcon
+git clone https://github.com/Tiiffi/mcrcon.git scripts/rcon
+make scripts/rcon/mcrcon
 
 systemctl --user enable /home/minecraft/systemd/services/mc.service
 systemctl --user enable /home/minecraft/systemd/services/mc-backup.service
@@ -58,15 +58,15 @@ systemctl daemon-reload
 
 cd /home/minecraft/scripts/build || exit
 # temp disable
-#curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-#java -jar BuildTools.jar --rev latest
-#mv spigot*.jar ../../runtime/
+curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+java -jar BuildTools.jar --rev latest
+mv spigot*.jar ../../runtime/
 
 
 cd /home/minecraft/runtime || exit
 # temp disable
-#java -XX:+UseG1GC -jar spigot*.jar nogui
-#sed -i "s/false/true/g" eula.txt
+java -XX:+UseG1GC -jar spigot*.jar nogui
+sed -i "s/false/true/g" eula.txt
 
 cd /home/minecraft/ || exit
 chown -R minecraft:minecraft .
